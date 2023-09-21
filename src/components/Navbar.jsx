@@ -40,9 +40,11 @@ const Navbar = ({ data }) => {
         flexDirection={"column"}
         bg={"gray.400"}
         h={"100vh"}
+        position={"fixed"}
         w={"fit-content"}
         p={"2rem"}
         gap={"1rem"}
+        zIndex={"3"}
       >
         {data.map((ele) => {
           return (

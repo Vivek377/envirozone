@@ -5,13 +5,13 @@ import { ContentContext } from "../context/ContentContextProvider";
 const Content = () => {
   const { file } = useContext(ContentContext);
 
-  console.log(file);
-
   return (
     <div>
-      <Box>
-        <Text>{file}</Text>
-        <Text>{!file && "No content available"}</Text>
+      <Box zIndex={"1"}>
+        <Box w={"60%"} m={"auto"}>
+          <Text>{file}</Text>
+          <Text>{!file && "No content available"}</Text>
+        </Box>
       </Box>
     </div>
   );
