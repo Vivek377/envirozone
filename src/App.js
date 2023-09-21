@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { useContext, useEffect, useState } from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+import axios from 'axios';
+import { ContentContext } from './context/ContentContextProvider';
+import Content from './components/Content';
 
 function App() {
+  const [data, setData] = useState([]);
+  const { file } = useContext(ContentContext);
+
+  console.log(file);
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/posts`).then(res => setData(res.data)).catch(e => console.log(e))
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar data={data} />
+      <Content />
     </div>
   );
 }
